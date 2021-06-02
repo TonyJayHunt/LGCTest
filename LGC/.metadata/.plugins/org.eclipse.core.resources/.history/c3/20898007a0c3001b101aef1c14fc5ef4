@@ -14,7 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class organic{
+public class Nonorganic{
 
     public String baseUrl = "https://www.lgcstandards.com/GB/en/orderRequest";
     

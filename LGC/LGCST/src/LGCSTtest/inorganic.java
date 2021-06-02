@@ -14,7 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class organic{
+public class inorganic{
 
     public String baseUrl = "https://www.lgcstandards.com/GB/en/orderRequest";
     
@@ -57,13 +57,13 @@ public class organic{
 	  
 	  driver.get(baseUrl);
 	  
-	  String organicbutton = driver.findElement(By.xpath("//*[@id=\"organicRadioBtn\"]/span[2]/h3")).getText();
+	  String organicbutton = driver.findElement(By.xpath("//*[@id=\"cqInorganicRadioBtn\"]")).getText();
 	  
-      String expectedText = "Organic";
+      String expectedText = "Inorganic";
       
       Assert.assertEquals(organicbutton, expectedText);
 	  
-      driver.findElement(By.id("organicRadioBtn")).isSelected();
+      driver.findElement(By.id("cqInorganicRadioBtn")).isSelected();
       
       driver.findElement(By.id("cqSelectCustomSolutionTypeBtn")).click();
   }

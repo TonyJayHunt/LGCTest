@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="LGCSTtest.organic">
+      <class name="LGCSTtest.inorganic">
         <methods>
           <include name="openpage"/>
+          <include name="tearDown"/>
           <include name="uploadfile"/>
         </methods>
-      </class> <!-- LGCSTtest.organic -->
+      </class> <!-- LGCSTtest.inorganic -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

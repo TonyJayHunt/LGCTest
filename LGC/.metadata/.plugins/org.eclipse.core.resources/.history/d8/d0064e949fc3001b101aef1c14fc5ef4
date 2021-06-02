@@ -129,6 +129,7 @@ public class organic{
 	  
 	  TimeUnit.SECONDS.sleep(1);
 	  	  
+	  //driver.findElement(By.xpath("/html/body/div[1]/div/section/div[2]/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[14]/span[2]/div/div/input")).sendKeys(Keys.CONTROL, Keys.END);
 	  
 	  Select dropdown = new Select(driver.findElement(By.className("el-input el-input--suffix")));
 	  
