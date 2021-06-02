@@ -1,0 +1,32 @@
+package LGCSTtest;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+public class test1 {
+    public String baseUrl = "https://www.lgcstandards.com/GB/en/orderRequest";
+    
+    String driverPath = "C:\\chromedriver.exe";
+    
+    public WebDriver driver ; 
+    
+  @Test
+  public void verifypage() {
+      System.out.println("launching Chrome browser"); 
+      
+      System.setProperty("webdriver.chrome.driver", driverPath);
+      
+      driver = new ChromeDriver();
+      
+      driver.get(baseUrl);
+      String expectedTitle = "LGC Standards";
+      
+      String actualTitle = driver.getTitle();
+      
+      Assert.assertEquals(actualTitle, expectedTitle);
+      
+      driver.close();
+  }
+}

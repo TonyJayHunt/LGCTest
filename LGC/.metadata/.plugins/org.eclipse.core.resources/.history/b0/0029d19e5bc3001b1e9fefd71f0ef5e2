@@ -1,0 +1,131 @@
+package LGCSTtest;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+public class organic{
+
+    public String baseUrl = "https://www.lgcstandards.com/GB/en/orderRequest";
+    
+    String driverPath = "C:\\chromedriver.exe";
+    
+    public WebDriver driver ; 
+    
+    public String path = new File("CustomQuoteUpload_15_CAS_Only.xls").getAbsolutePath();
+    
+    
+    public String file = "CustomQuoteUpload_15_CAS_Only.xls";
+    
+  	@BeforeTest
+  	public void openpage(){
+        System.out.println("launching Chrome browser"); 
+        
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        
+        driver = new ChromeDriver();
+        
+        driver.manage().window().maximize();
+  	}
+  
+  @Test
+  public void verifypage() {
+      
+      driver.get(baseUrl);
+      
+      String expectedTitle = "LGC Standards";
+      
+      String actualTitle = driver.getTitle();
+      
+      Assert.assertEquals(actualTitle, expectedTitle);    
+  }
+  
+  @Test
+  public void selectorganic() {
+	  
+	  driver.get(baseUrl);
+	  
+	  String organicbutton = driver.findElement(By.xpath("//*[@id=\"organicRadioBtn\"]/span[2]/h3")).getText();
+	  
+      String expectedText = "Organic";
+      
+      Assert.assertEquals(organicbutton, expectedText);
+	  
+      driver.findElement(By.id("organicRadioBtn")).isSelected();
+      
+      driver.findElement(By.id("cqSelectCustomSolutionTypeBtn")).click();
+  }
+  
+  @Test
+  public void uploadfile() throws AWTException {
+	  
+	  driver.get(baseUrl);
+	  
+
+	  //unable to get the file to upload 
+//	  driver.findElement(By.xpath("//*[@id=\"cqUploadFile\"]/div/div/i")).click();
+//	  
+//	  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//	  
+//	  StringSelection str = new StringSelection(path);
+//	  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+//	  
+//	  
+//	  Robot rb = new Robot();
+//	  
+//	     // press Contol+V for pasting
+//	  rb.keyPress(KeyEvent.VK_CONTROL);
+//	  rb.keyPress(KeyEvent.VK_V);
+//	 
+//	    // release Contol+V for pasting
+//	  rb.keyRelease(KeyEvent.VK_CONTROL);
+//	  rb.keyRelease(KeyEvent.VK_V);
+//	 
+//	    // for pressing and releasing Enter
+//	  rb.keyPress(KeyEvent.VK_ENTER);
+//	  rb.keyRelease(KeyEvent.VK_ENTER);	  
+//	  
+//	  driver.findElement(By.xpath("//*[@id=\"cqUploadFile\"]/div/div/i")).click();
+//	  
+//	  driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//	  
+//	  StringSelection str2 = new StringSelection(file);
+//	  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str2, null);
+//	  
+//	  rb.keyPress(KeyEvent.VK_CONTROL);
+//	  rb.keyPress(KeyEvent.VK_V);
+//	 
+//	    // release Contol+V for pasting
+//	  rb.keyRelease(KeyEvent.VK_CONTROL);
+//	  rb.keyRelease(KeyEvent.VK_V);
+//	 
+//	    // for pressing and releasing Enter
+//	  rb.keyPress(KeyEvent.VK_ENTER);
+//	  rb.keyRelease(KeyEvent.VK_ENTER);	 
+	  
+	  driver.findElement(By.id("customQuotePasteCodes")).isSelected();
+	  
+	  String casnumbers ="53949-54-5 53949-53-4 51146-55-5 121662-14-4 15687-27-1 7782-50-5 590-46-5 7664-41-7 10043-35-3 73590-58-6 34381-68-5 59-66-5  339-43-5 107-21-1 66357-59-3 100-01-6 100-02-7";
+			  
+	  
+	  driver.findElement(By.id("customQuotePasteCodes")).sendKeys(casnumbers);
+	  
+      
+      
+      driver.findElement(By.id("cqSelectCustomSolutionTypeBtn")).click();
+  }
+//	@AfterTest
+//	public void tearDown(){
+//      	driver.quit();
+//	}
+
+}
